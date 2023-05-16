@@ -1,0 +1,9 @@
+**/.venv
+**/venv
+**/.idea
+**/__pycache__
+**/ignore
+**/build
+**/dist
+**/main.spec
+**/Output
