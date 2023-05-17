@@ -1,6 +1,6 @@
 # AccountGuard_PyQt5
 
-A easy-to-use account manager.                                                                                               
+A easy-to-use account manager.                                                                                                                                                                                                                           
 Created with PyQt5                                                                                                            
 By Parker Phelps
 
