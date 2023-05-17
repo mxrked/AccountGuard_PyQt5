@@ -1,8 +1,3 @@
-'''
-
-    This is used to detect and make sure both a ODBC Driver and SSMS is installed
-
-'''
 
 from frontend.assets.sample_code.locating_odbc_drivers import detect_odbc_drivers
 from frontend.assets.sample_code.locating_ssms import ssms_installation_location
