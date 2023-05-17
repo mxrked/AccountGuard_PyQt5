@@ -11,9 +11,9 @@ from PyQt5.QtGui import QCursor
 import sys
 
 
-class UI(QMainWindow):
+class AddAccountWindow(QMainWindow):
     def __init__(self):
-        super(UI, self).__init__()
+        super(AddAccountWindow, self).__init__()
 
         uic.loadUi("frontend/ui/AddAccountWindow.ui", self)
 
@@ -31,6 +31,6 @@ class UI(QMainWindow):
 # initializing app
 def main():
     app = QApplication(sys.argv)
-    UIWindow = UI()
+    UIWindow = AddAccountWindow()
     UIWindow.show()
     app.exec_()
