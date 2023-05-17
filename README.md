@@ -10,7 +10,7 @@ SETTING UP THE PROGRAM
    -   C:\Program Files\
    -   C:\Program Files (x86)\
    -   D:\
-
+   
 3. Connect to using the following:
    - Server Authentication: Windows Authentication
    - Login: localhost 
