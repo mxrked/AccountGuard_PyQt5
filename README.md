@@ -17,3 +17,11 @@ SETTING UP THE PROGRAM
 4. Create a new database called "AccountGuard_PyQt5".
 5. Create a new query and copy and paste the "Database.sql" (backend/database/) contents into the query and execute it. Now the table for the program has been created.
 6. Work in progress....
+
+
+-------------------
+RUNNING THE PROGRAM
+-------------------
+1. Download/ZIP the dist folder.
+2. Extract the contents of the folder to another folder of your choicing.
+3. Open the next folder and execute the "run.exe" file.
