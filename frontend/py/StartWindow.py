@@ -11,10 +11,6 @@ from PyQt5.QtGui import QCursor
 from frontend.assets.qrc import background_gradient, app_icon, lock_icon
 from frontend.assets.funcs.detect_required_programs import check_for_required_programs
 
-
-# from frontend.assets.sample_code.locating_odbc_drivers import detect_odbc_drivers
-# from frontend.assets.sample_code.locating_ssms import ssms_installation_location
-
 import sys
 
 
