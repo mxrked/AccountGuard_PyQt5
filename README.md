@@ -8,7 +8,7 @@ By Parker Phelps
 SETTING UP THE PROGRAM
 ----------------------
 
-1. Make sure you have SQL server installed and its respected drivers ({ODBC Driver 17 for SQL Server}) and also make sure that SQL is running.
+1. Make sure you have SQL server installed and its respected driver ({ODBC Driver 17 for SQL Server}) and also make sure that SQL is running.
 2. Download SSMS (SQL Microsoft Studio Management 19) - Download it to either the following locations:
 
    -   C:\Program Files\
