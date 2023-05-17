@@ -37,8 +37,8 @@ class ViewAccountsWindow(QMainWindow):
         from frontend.py.StartWindow import StartWindow
 
         startWindow = StartWindow()
-        startWindow.show()
         startWindow.move(self.pos())
+        startWindow.show()
 
         self.hide()
 

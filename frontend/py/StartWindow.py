@@ -53,8 +53,8 @@ class StartWindow(QMainWindow):
 
             from frontend.py import AddAccountWindow
 
-            AddAccountWindow.UIWindow.show()
             AddAccountWindow.UIWindow.move(self.pos())
+            AddAccountWindow.UIWindow.show()
             self.hide()
 
         def openRemoveAccountWindow():
@@ -65,8 +65,8 @@ class StartWindow(QMainWindow):
 
             from frontend.py import RemoveAccountWindow
 
-            RemoveAccountWindow.UIWindow.show()
             RemoveAccountWindow.UIWindow.move(self.pos())
+            RemoveAccountWindow.UIWindow.show()
             self.hide()
 
         def openViewAccountsWindow():
@@ -77,8 +77,8 @@ class StartWindow(QMainWindow):
 
             from frontend.py import ViewAccountsWindow
 
-            ViewAccountsWindow.UIWindow.show()
             ViewAccountsWindow.UIWindow.move(self.pos())
+            ViewAccountsWindow.UIWindow.show()
             self.hide()
 
 
