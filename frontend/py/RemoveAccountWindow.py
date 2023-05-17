@@ -29,8 +29,6 @@ class RemoveAccountWindow(QMainWindow):
 
 
 # initializing app
-def main():
-    app = QApplication(sys.argv)
-    UIWindow = RemoveAccountWindow()
-    UIWindow.show()
-    app.exec_()
+app = QApplication(sys.argv)
+UIWindow = RemoveAccountWindow()
+app.exec_()

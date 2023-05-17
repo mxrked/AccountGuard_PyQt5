@@ -29,8 +29,6 @@ class ViewAccountsWindow(QMainWindow):
 
 
 # initializing app
-def main():
-    app = QApplication(sys.argv)
-    UIWindow = ViewAccountsWindow()
-    UIWindow.show()
-    app.exec_()
+app = QApplication(sys.argv)
+UIWindow = ViewAccountsWindow()
+app.exec_()

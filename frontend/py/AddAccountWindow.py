@@ -25,12 +25,10 @@ class AddAccountWindow(QMainWindow):
         #       print("Test")
 
         # Show the app
-        self.show()
+        # self.show()
 
 
 # initializing app
-def main():
-    app = QApplication(sys.argv)
-    UIWindow = AddAccountWindow()
-    UIWindow.show()
-    app.exec_()
+app = QApplication(sys.argv)
+UIWindow = AddAccountWindow()
+app.exec_()

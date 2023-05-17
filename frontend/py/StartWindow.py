@@ -11,6 +11,7 @@ from PyQt5.QtGui import QCursor
 from frontend.assets.qrc import background_gradient, app_icon, lock_icon
 from frontend.assets.funcs.detect_required_programs import check_for_required_programs
 
+
 # from frontend.assets.sample_code.locating_odbc_drivers import detect_odbc_drivers
 # from frontend.assets.sample_code.locating_ssms import ssms_installation_location
 
@@ -40,10 +41,38 @@ class StartWindow(QMainWindow):
         #       print("Test")
 
         def exitApp():
+            '''
+            This is used to close the app
+            :return:
+            '''
             sys.exit()
+
+        def openAddAccountWindow():
+            '''
+            This is used to open the add account window
+            :return:
+            '''
+
+            from frontend.py import AddAccountWindow
+
+            AddAccountWindow.UIWindow.show()
+            self.hide()
+
+        def openRemoveAccountWindow():
+            '''
+            This is used to open the remove account window
+            :return:
+            '''
+
+            from frontend.py import RemoveAccountWindow
+
+            RemoveAccountWindow.UIWindow.show()
+            self.hide()
 
 
         # Apply functions to/style widgets
+        self.addAccountBtn.clicked.connect(openAddAccountWindow)
+        self.removeAccountBtn.clicked.connect(openRemoveAccountWindow)
         self.exitCloseBtn.clicked.connect(exitApp)
 
 
