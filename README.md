@@ -22,6 +22,6 @@ SETTING UP THE PROGRAM
 -------------------
 RUNNING THE PROGRAM
 -------------------
-1. Download/ZIP the dist folder.
+1. Download/ZIP the project.
 2. Extract the contents of the folder to another folder of your choicing.
-3. Open the next folder and execute the "run.exe" file.
+3. Open the "output/run" folder and execute the "run.exe" file.
