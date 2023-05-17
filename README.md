@@ -5,7 +5,7 @@ SETTING UP THE PROGRAM
 ----------------------
 
 1. Make sure you have SQL server installed and its respected drivers ({ODBC Driver 17 for SQL Server}) and also make sure that SQL is running.
-2. Download a SQL Database Manager (Recommended: SMSS)
+2. Download SMSS (SQL Microsoft Studio Management 19)
 3. Connect to using the following:
    - Server Authentication: Windows Authentication
    - Login: localhost 
