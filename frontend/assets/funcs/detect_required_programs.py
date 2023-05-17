@@ -1,6 +1,38 @@
 
-from frontend.assets.sample_code.locating_odbc_drivers import detect_odbc_drivers
-from frontend.assets.sample_code.locating_ssms import ssms_installation_location
+import pyodbc
+import os
+
+def find_ssms_installation_location():
+    '''
+    This is used to detect if the user has SSMS installed on their computer
+    :return:
+    '''
+
+    possible_locations = [
+        r"C:\Program Files\Microsoft SQL Server Management Studio 19\Common7\IDE",
+        r"C:\Program Files (x86)\Microsoft SQL Server Management Studio 19\Common7\IDE",
+        r"D:\Microsoft SQL Server Management Studio 19\Common7\IDE",
+        # Add more possible locations if applicable
+    ]
+
+    for location in possible_locations:
+        if os.path.exists(location):
+            return location
+
+    return None  # SSMS not found
+
+def locating_odbc_drivers():
+    '''
+    This is used to check if ODBC Drivers are installed
+    :return:
+    '''
+
+    driver_name = "ODBC Driver 17 for SQL Server"
+    drivers = [driver for driver in pyodbc.drivers() if driver == driver_name] # Goes through all the drivers to find one that matches the driver name
+    return bool(drivers)
+
+detect_odbc_drivers = locating_odbc_drivers()
+ssms_installation_location = find_ssms_installation_location()
 
 def detect_required_programs():
     '''
@@ -47,7 +79,5 @@ def detect_required_programs():
         bothFound = "Both programs were found"
 
         return bothFound
-
-
 
 check_for_required_programs = detect_required_programs()
