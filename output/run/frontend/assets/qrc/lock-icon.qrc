@@ -1,5 +1,0 @@
-<RCC>
-  <qresource prefix="newPrefix">
-    <file>../imgs/lock-logo.png</file>
-  </qresource>
-</RCC>
