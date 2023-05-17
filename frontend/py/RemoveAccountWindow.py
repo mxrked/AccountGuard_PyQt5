@@ -27,6 +27,20 @@ class RemoveAccountWindow(QMainWindow):
         # Show the app
         self.show()
 
+    def closeEvent(self, event):
+        '''
+        This is used to close the window on the red X and reopens the start window
+        :param event:
+        :return:
+        '''
+
+        from frontend.py.StartWindow import StartWindow
+
+        startWindow = StartWindow()
+        startWindow.show()
+        startWindow.move(self.pos())
+
+        self.hide()
 
 # initializing app
 app = QApplication(sys.argv)

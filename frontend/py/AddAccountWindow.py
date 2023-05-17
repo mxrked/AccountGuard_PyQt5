@@ -5,13 +5,15 @@
 '''
 
 from PyQt5.QtWidgets import *
-from PyQt5 import uic, QtCore, QtGui
+from PyQt5 import uic, QtCore, QtGui, Qt
 from PyQt5.QtGui import QCursor
 
 import sys
 
 
 class AddAccountWindow(QMainWindow):
+
+
     def __init__(self):
         super(AddAccountWindow, self).__init__()
 
@@ -26,6 +28,22 @@ class AddAccountWindow(QMainWindow):
 
         # Show the app
         # self.show()
+
+    def closeEvent(self, event):
+        '''
+        This is used to close the window on the red X and reopens the start window
+        :param event:
+        :return:
+        '''
+
+        from frontend.py.StartWindow import StartWindow
+
+        startWindow = StartWindow()
+        startWindow.show()
+        startWindow.move(self.pos())
+
+        self.hide()
+
 
 
 # initializing app

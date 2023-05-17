@@ -19,6 +19,8 @@ import sys
 
 
 class StartWindow(QMainWindow):
+
+
     def __init__(self):
         super(StartWindow, self).__init__()
 
@@ -56,6 +58,7 @@ class StartWindow(QMainWindow):
             from frontend.py import AddAccountWindow
 
             AddAccountWindow.UIWindow.show()
+            AddAccountWindow.UIWindow.move(self.pos())
             self.hide()
 
         def openRemoveAccountWindow():
@@ -67,12 +70,26 @@ class StartWindow(QMainWindow):
             from frontend.py import RemoveAccountWindow
 
             RemoveAccountWindow.UIWindow.show()
+            RemoveAccountWindow.UIWindow.move(self.pos())
+            self.hide()
+
+        def openViewAccountsWindow():
+            '''
+            This is used to open the view accounts window
+            :return:
+            '''
+
+            from frontend.py import ViewAccountsWindow
+
+            ViewAccountsWindow.UIWindow.show()
+            ViewAccountsWindow.UIWindow.move(self.pos())
             self.hide()
 
 
         # Apply functions to/style widgets
         self.addAccountBtn.clicked.connect(openAddAccountWindow)
         self.removeAccountBtn.clicked.connect(openRemoveAccountWindow)
+        self.viewAccountsBtn.clicked.connect(openViewAccountsWindow)
         self.exitCloseBtn.clicked.connect(exitApp)
 
 
@@ -95,12 +112,9 @@ class StartWindow(QMainWindow):
 
 
 # initializing app
+
 def main():
     app = QApplication(sys.argv)
     UIWindow = StartWindow()
     UIWindow.show()
     app.exec_()
-
-
-if __name__ == "__main__":
-    main()
