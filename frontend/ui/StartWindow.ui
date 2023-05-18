@@ -755,6 +755,13 @@ QPushButton::hover {
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>startWindow_AddAccountBtn</tabstop>
+  <tabstop>startWindow_RemoveAccountBtn</tabstop>
+  <tabstop>startWindow_ViewAccountsBtn</tabstop>
+  <tabstop>startWindow_ExitCloseBtn</tabstop>
+  <tabstop>startWindow_InfoBtn</tabstop>
+ </tabstops>
  <resources>
   <include location="../assets/qrc/background-gradient.qrc"/>
   <include location="../assets/qrc/lock-icon.qrc"/>
