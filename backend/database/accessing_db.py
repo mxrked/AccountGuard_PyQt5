@@ -56,7 +56,6 @@ def closeConnectionToDB(self):
 
         # This is used to pass the close function on the connection if there isnt one
         if connect is not None:
-            connect = connectToDB(self)
             connect.close()
 
             connect = None
