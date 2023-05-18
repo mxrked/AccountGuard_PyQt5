@@ -20,14 +20,33 @@ class AddAccountWindow(QMainWindow):
         uic.loadUi("frontend/ui/AddAccountWindow.ui", self)
 
         # Define widgets
-        # EX: self.testWidget = self.findChild(QLineEdit, "startWindow_TestLE")
+        self.backBtn = self.findChild(QPushButton, "addAccountWindow_BackBtn")
 
         # Define functions
         # EX: def doSomething():
         #       print("Test")
 
         # Show the app
-        # self.show()
+        self.show()
+
+        def goBack():
+            '''
+            This is used to go back to the start window
+            :return:
+            '''
+
+            from frontend.py.StartWindow import StartWindow
+
+            startWindow = StartWindow()
+            startWindow.move(self.pos())
+            startWindow.show()
+
+            self.hide()
+
+
+
+        # Apply functions to/style widgets
+        self.backBtn.clicked.connect(goBack)
 
     def closeEvent(self, event):
         '''
