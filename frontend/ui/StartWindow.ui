@@ -145,6 +145,12 @@
        <height>0</height>
       </rect>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -177,8 +183,14 @@
        <x>10</x>
        <y>30</y>
        <width>591</width>
-       <height>0</height>
+       <height>50</height>
       </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
      </property>
      <property name="maximumSize">
       <size>
@@ -212,8 +224,14 @@
        <x>10</x>
        <y>30</y>
        <width>591</width>
-       <height>0</height>
+       <height>50</height>
       </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
      </property>
      <property name="maximumSize">
       <size>
@@ -247,8 +265,14 @@
        <x>10</x>
        <y>30</y>
        <width>591</width>
-       <height>0</height>
+       <height>50</height>
       </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
      </property>
      <property name="maximumSize">
       <size>
@@ -752,6 +776,48 @@ QPushButton::hover {
       </layout>
      </item>
     </layout>
+   </widget>
+   <widget class="QLabel" name="startWindow_FailedDBConnectLabel">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>590</y>
+      <width>601</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lato</family>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	border-image: none;
+	color: red
+}</string>
+    </property>
+    <property name="text">
+     <string>Failed to connect to the database. View the README.md for installation help.</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
   </widget>
  </widget>

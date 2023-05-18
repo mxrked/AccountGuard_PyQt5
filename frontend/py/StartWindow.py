@@ -31,6 +31,7 @@ class StartWindow(QMainWindow):
         self.bothNotDetectedLabel = self.findChild(QLabel, "startWindow_BothNotFoundLabel")
         self.sSMSNotDetectedLabel = self.findChild(QLabel, "startWindow_SSMSNotFoundLabel")
         self.oDBCNotDetectedLabel = self.findChild(QLabel, "startWindow_ODBCNotFoundLabel")
+        self.failedToConnectLabel = self.findChild(QLabel, "startWindow_FailedDBConnectLabel")
         self.addAccountBtn = self.findChild(QPushButton, "startWindow_AddAccountBtn")
         self.removeAccountBtn = self.findChild(QPushButton, "startWindow_RemoveAccountBtn")
         self.viewAccountsBtn = self.findChild(QPushButton, "startWindow_ViewAccountsBtn")
@@ -46,7 +47,7 @@ class StartWindow(QMainWindow):
             This is used to close the app
             :return:
             '''
-            closeConnectionToDB()
+            closeConnectionToDB(self)
             sys.exit()
 
         def openAddAccountWindow():
@@ -110,7 +111,7 @@ class StartWindow(QMainWindow):
         display_success_error_label(self)
 
         # Connecting to database
-        connectToDB()
+        connectToDB(self)
 
 
         # Show the app
@@ -123,7 +124,7 @@ class StartWindow(QMainWindow):
         :return:
         '''
 
-        closeConnectionToDB()
+        closeConnectionToDB(self)
 
 
 # initializing app
