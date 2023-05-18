@@ -10,11 +10,14 @@ from PyQt5.QtGui import QCursor
 
 from frontend.assets.qrc import background_gradient, app_icon, lock_icon
 from frontend.assets.funcs.display_success_error_label import display_success_error_label
+from backend.database.accessing_db import closeConnectionToDB, connectToDB
 
-import sys
+import sys, pyodbc
+
 
 
 class StartWindow(QMainWindow):
+
 
 
     def __init__(self):
@@ -43,6 +46,7 @@ class StartWindow(QMainWindow):
             This is used to close the app
             :return:
             '''
+            closeConnectionToDB()
             sys.exit()
 
         def openAddAccountWindow():
@@ -105,9 +109,21 @@ class StartWindow(QMainWindow):
         # Displaying result of program detection
         display_success_error_label(self)
 
+        # Connecting to database
+        connectToDB()
+
 
         # Show the app
         self.show()
+
+    def closeEvent(self, event):
+        '''
+        This is used to close the window on the red X
+        :param event:
+        :return:
+        '''
+
+        closeConnectionToDB()
 
 
 # initializing app
