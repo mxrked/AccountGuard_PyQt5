@@ -1,31 +1,67 @@
 
 import pyodbc
 
-def connectToDB():
+connect = None # This is used to pass the close function on the connection if there isnt one
+
+def connectToDB(self):
     '''
     This is used to connect to the database
     :return: connect
     '''
 
-    connectionString = 'Driver={ODBC Driver 17 for SQL Server};Server=localhost;Database=AccountGuard_PyQt5;Trusted_Connection=yes;'
+    # This is used to pass the close function on the connection if there isnt one
+    global connect
 
-    connect = pyodbc.connect(connectionString)
+    try:
 
-    if connect:
-        print("Connected to the database.")
+        # This is used to pass the close function on the connection if there isnt one
+        if connect is not None:
+            return connect
 
-        return connect
+        connectionString = 'Driver={ODBC Driver 17 for SQL Server};Server=localhost;Database=AccountGuard_PyQt5;Trusted_Connection=yes;'
+        connect = pyodbc.connect(connectionString)
 
-    else:
-        print("Not connect to the database.")
+        if connect:
+            print("Connected to the database.")
+            return connect
 
-def closeConnectionToDB():
+    except pyodbc.Error as e:
+
+        print("Failed to/Not connect to the database.")
+
+        # Displaying failed connection error
+        self.failedToConnectLabel.setFixedHeight(50)
+
+        # Disabling buttons
+        self.addAccountBtn.setEnabled(False)
+        self.addAccountBtn.setStyleSheet(
+            "QPushButton { background-color: rgba(121, 182, 0, 0.3); border-image: none; border: none; color: rgba(0,0,0,0.4); }")
+        self.removeAccountBtn.setEnabled(False)
+        self.removeAccountBtn.setStyleSheet(
+            "QPushButton { background-color: rgba(121, 182, 0, 0.3); border-image: none; border: none; color: rgba(0,0,0,0.4); }")
+        self.viewAccountsBtn.setEnabled(False)
+        self.viewAccountsBtn.setStyleSheet(
+            "QPushButton { background-color: rgba(121, 182, 0, 0.3); border-image: none; border: none; color: rgba(0,0,0,0.4); }")
+
+def closeConnectionToDB(self):
     '''
     This is used to close the connect to the database
     :return:
     '''
 
-    connect = connectToDB()
-    connect.close()
+    # This is used to pass the close function on the connection if there isnt one
+    global connect
 
-    print("Connection closed.")
+    try:
+
+        # This is used to pass the close function on the connection if there isnt one
+        if connect is not None:
+            connect = connectToDB(self)
+            connect.close()
+
+            connect = None
+
+            print("Connection closed.")
+
+    except pyodbc.Error as e:
+        pass
