@@ -81,12 +81,25 @@ class StartWindow(QMainWindow):
             ViewAccountsWindow.UIWindow.show()
             self.hide()
 
+        def openInfoDialog():
+            '''
+            This is used to open the info dialog
+            :return:
+            '''
+
+            from frontend.py import InfoDialog
+
+            InfoDialog.UIDialog.move(self.pos())
+            InfoDialog.UIDialog.show()
+            self.hide()
+
 
         # Apply functions to/style widgets
         self.addAccountBtn.clicked.connect(openAddAccountWindow)
         self.removeAccountBtn.clicked.connect(openRemoveAccountWindow)
         self.viewAccountsBtn.clicked.connect(openViewAccountsWindow)
         self.exitCloseBtn.clicked.connect(exitApp)
+        self.infoBtn.clicked.connect(openInfoDialog)
 
 
         # Displaying result of program detection
