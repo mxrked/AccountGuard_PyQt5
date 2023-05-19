@@ -13,7 +13,8 @@ SETTING UP THE PROGRAM
 1. Make sure you have SQL server installed and its respected driver ({ODBC Driver 17 for SQL Server}) and also make sure that SQL is running. To check if SQL is running, do the following:
    - In the windows search bar, type "Services" and press enter.
    - Scroll to the bottom where you should see the following:
-   https://raw.githubusercontent.com/mxrked/AccountGuard_PyQt5/master/frontend/assets/imgs/sqlrunning.png
+   ![Alt Text]([path/to/image.png](https://raw.githubusercontent.com/mxrked/AccountGuard_PyQt5/master/frontend/assets/imgs/sqlrunning.png))
+   
 
 3. Download SSMS (SQL Microsoft Studio Management 19) - Download it to either the following locations:
 
