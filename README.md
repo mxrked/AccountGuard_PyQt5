@@ -1,5 +1,7 @@
 # AccountGuard_PyQt5
 
+* THIS GUIDE IS DEDICATED TO WINDOWS USERS *
+
 A easy-to-use account manager.                                                                                                                                                                                                                           
 Created with PyQt5                                                                                                            
 By Parker Phelps
@@ -8,8 +10,12 @@ By Parker Phelps
 SETTING UP THE PROGRAM
 ----------------------
 
-1. Make sure you have SQL server installed and its respected driver ({ODBC Driver 17 for SQL Server}) and also make sure that SQL is running.
-2. Download SSMS (SQL Microsoft Studio Management 19) - Download it to either the following locations:
+1. Make sure you have SQL server installed and its respected driver ({ODBC Driver 17 for SQL Server}) and also make sure that SQL is running. To check if SQL is running, do the following:
+   - In the windows search bar, type "Services" and press enter.
+   - Scroll to the bottom where you should see the following:
+   frontend/assets/imgs/sqlrunning.png
+
+3. Download SSMS (SQL Microsoft Studio Management 19) - Download it to either the following locations:
 
    -   C:\Program Files\
    -   C:\Program Files (x86)\
