@@ -31,7 +31,9 @@ SETTING UP THE PROGRAM
                                                                                                                    
       Now save the table as "Accounts"
 
-6. Work in progress....
+6. Now run the program's "run.exe" file. You should be seeing green text at the bottom that says "All requirements were found!", if you do see it, the program is working. If you see one of the following errors here is why:
+   - "Both SSMS and ODBC were not found! Refer to the README.md for installation." = This means that neither SSMS or ODBC Driver 17 were found. You must install both in the proper location for it to be picked up (Perferred to install in there default locations via wizard)
+   - "ODBC was not found! Download ODBC Driver 17 for SQL Server." = This means that ODBC Driver 17 was not found. You must install it in the proper location for it to be picked up (Perferred to install in its default location via wizard)
 
 
 -------------------
