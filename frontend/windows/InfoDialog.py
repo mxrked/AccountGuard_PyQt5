@@ -35,7 +35,7 @@ class InfoDialog(QDialog):
             :return:
             '''
 
-            from frontend.py.StartWindow import StartWindow
+            from frontend._py.StartWindow import StartWindow
 
             startWindow = StartWindow()
             startWindow.move(self.pos())
@@ -67,7 +67,7 @@ class InfoDialog(QDialog):
         :return:
         '''
 
-        from frontend.py.StartWindow import StartWindow
+        from frontend._py.StartWindow import StartWindow
 
         startWindow = StartWindow()
         startWindow.move(self.pos())

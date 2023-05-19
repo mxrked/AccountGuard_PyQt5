@@ -284,7 +284,7 @@ class AddAccountWindow(QMainWindow):
             :return:
             '''
 
-            from frontend.py.StartWindow import StartWindow
+            from frontend._py.StartWindow import StartWindow
 
             clearInputs()
             hideBottomLabels()
@@ -316,7 +316,7 @@ class AddAccountWindow(QMainWindow):
         :return:
         '''
 
-        from frontend.py.StartWindow import StartWindow
+        from frontend._py.StartWindow import StartWindow
 
         self.accountTypeLE.setText("")
         self.accountEmailLE.setText("")

@@ -20,13 +20,24 @@ class ViewAccountsWindow(QMainWindow):
         # Define widgets
         # EX: self.testWidget = self.findChild(QLineEdit, "startWindow_TestLE")
         self.backBtn = self.findChild(QPushButton, "viewAccountsWindow_BackBtn")
+        self.typesList = self.findChild(QListWidget, "viewAccountsWindow_TypesList")
+        self.emailsList = self.findChild(QListWidget, "viewAccountsWindow_EmailsList")
+        self.passwordsList = self.findChild(QListWidget, "viewAccountsWindow_PasswordsList")
+        self.unselectBtn = self.findChild(QPushButton, "viewAccountsWindow_UnselectBtn")
 
         # Define functions
         # EX: def doSomething():
         #       print("Test")
 
-        # Show the app
-        self.show()
+        def unselectItems():
+            '''
+            This unselects the selected items in the lists
+            :return:
+            '''
+
+            self.typesList.clearSelection()
+            self.emailsList.clearSelection()
+            self.passwordsList.clearSelection()
 
         def goBack():
             '''
@@ -34,7 +45,7 @@ class ViewAccountsWindow(QMainWindow):
             :return:
             '''
 
-            from frontend.py.StartWindow import StartWindow
+            from frontend.windows.StartWindow import StartWindow
 
             startWindow = StartWindow()
             startWindow.move(self.pos())
@@ -46,6 +57,11 @@ class ViewAccountsWindow(QMainWindow):
 
         # Apply functions to/style widgets
         self.backBtn.clicked.connect(goBack)
+        self.unselectBtn.clicked.connect(unselectItems)
+
+
+        # Show the app
+        self.show()
 
     def closeEvent(self, event):
         '''
@@ -54,7 +70,7 @@ class ViewAccountsWindow(QMainWindow):
         :return:
         '''
 
-        from frontend.py.StartWindow import StartWindow
+        from frontend.windows.StartWindow import StartWindow
 
         startWindow = StartWindow()
         startWindow.move(self.pos())

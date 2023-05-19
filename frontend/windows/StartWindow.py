@@ -13,6 +13,7 @@ from frontend.assets.funcs.display_success_error_label import display_success_er
 from backend.database.accessing_db import closeConnectionToDB
 from backend.database.displaying_data import *
 
+
 import sys, pyodbc
 
 
@@ -24,6 +25,8 @@ class StartWindow(QMainWindow):
         super(StartWindow, self).__init__()
 
         uic.loadUi("frontend/ui/StartWindow.ui", self)
+
+
 
         # Define widgets
         # EX: self.testWidget = self.findChild(QLineEdit, "startWindow_TestLE")
@@ -59,7 +62,7 @@ class StartWindow(QMainWindow):
             :return:
             '''
 
-            from frontend.py import AddAccountWindow
+            from frontend._py import AddAccountWindow
 
             AddAccountWindow.UIWindow.move(self.pos())
             AddAccountWindow.UIWindow.show()
@@ -77,11 +80,14 @@ class StartWindow(QMainWindow):
             :return:
             '''
 
-            from frontend.py import RemoveAccountWindow
+            from frontend._py import RemoveAccountWindow
 
             RemoveAccountWindow.UIWindow.move(self.pos())
             RemoveAccountWindow.UIWindow.show()
             self.hide()
+
+
+        viewAccountsWindow = None
 
         def openViewAccountsWindow():
             '''
@@ -89,11 +95,44 @@ class StartWindow(QMainWindow):
             :return:
             '''
 
-            from frontend.py import ViewAccountsWindow
+            from frontend._py import ViewAccountsWindow
+            global viewAccountsWindow
 
-            ViewAccountsWindow.UIWindow.move(self.pos())
-            ViewAccountsWindow.UIWindow.show()
-            self.hide()
+            if viewAccountsWindow is None:
+
+                try:
+                    viewAccountsWindow = ViewAccountsWindow.ViewAccountsWindow()
+
+                    typesList = viewAccountsWindow.typesList
+                    emailsList = viewAccountsWindow.emailsList
+                    passwordsList = viewAccountsWindow.passwordsList
+
+                    connection = connectToDB(self)
+                    cursor = connection.cursor()
+
+                    typesQuery = "SELECT AccountType FROM Accounts"
+                    cursor.execute(typesQuery)
+                    types = cursor.fetchall()
+
+                    typesList.clear()
+                    emailsList.clear()
+                    passwordsList.clear()
+
+                    for type in types:
+                        item = QListWidgetItem(type[0])
+                        typesList.addItem(item)
+
+                    viewAccountsWindow.UIWindow.move(self.pos())
+                    viewAccountsWindow.UIWindow.show()
+                    self.hide()
+
+                except Exception as e:
+                    print("Error opening View Accounts window:", str(e))
+            else:
+                viewAccountsWindow.UIWindow.move(self.pos())
+                viewAccountsWindow.UIWindow.show()
+                self.hide()
+
 
         def openInfoDialog():
             '''
@@ -101,7 +140,7 @@ class StartWindow(QMainWindow):
             :return:
             '''
 
-            from frontend.py import InfoDialog
+            from frontend._py import InfoDialog
 
             InfoDialog.UIDialog.move(self.pos())
             InfoDialog.UIDialog.show()
