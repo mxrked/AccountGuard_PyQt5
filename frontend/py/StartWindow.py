@@ -10,14 +10,14 @@ from PyQt5.QtGui import QCursor
 
 from frontend.assets.qrc import background_gradient, app_icon, lock_icon
 from frontend.assets.funcs.display_success_error_label import display_success_error_label
-from backend.database.accessing_db import closeConnectionToDB, connectToDB
+from backend.database.accessing_db import closeConnectionToDB
+from backend.database.displaying_data import *
 
 import sys, pyodbc
 
 
 
 class StartWindow(QMainWindow):
-
 
 
     def __init__(self):
@@ -31,6 +31,7 @@ class StartWindow(QMainWindow):
         self.bothNotDetectedLabel = self.findChild(QLabel, "startWindow_BothNotFoundLabel")
         self.sSMSNotDetectedLabel = self.findChild(QLabel, "startWindow_SSMSNotFoundLabel")
         self.oDBCNotDetectedLabel = self.findChild(QLabel, "startWindow_ODBCNotFoundLabel")
+        self.onlySSMSDriversFoundLabel = self.findChild(QLabel, "startWindow_OnlySSMSDriversFoundLabel")
         self.failedToConnectLabel = self.findChild(QLabel, "startWindow_FailedDBConnectLabel")
         self.addAccountBtn = self.findChild(QPushButton, "startWindow_AddAccountBtn")
         self.removeAccountBtn = self.findChild(QPushButton, "startWindow_RemoveAccountBtn")
@@ -50,6 +51,8 @@ class StartWindow(QMainWindow):
             closeConnectionToDB(self)
             sys.exit()
 
+
+
         def openAddAccountWindow():
             '''
             This is used to open the add account window
@@ -60,6 +63,12 @@ class StartWindow(QMainWindow):
 
             AddAccountWindow.UIWindow.move(self.pos())
             AddAccountWindow.UIWindow.show()
+
+            displayAllAccounts(self)
+            displayAllTypes(self)
+            displayAllEmails(self)
+            displayAllPasswords(self)
+
             self.hide()
 
         def openRemoveAccountWindow():
@@ -111,7 +120,7 @@ class StartWindow(QMainWindow):
         display_success_error_label(self)
 
         # Connecting to database
-        connectToDB(self)
+        # connectCursor = connectToDB(self).cursor()
 
 
         # Show the app
@@ -125,6 +134,7 @@ class StartWindow(QMainWindow):
         '''
 
         closeConnectionToDB(self)
+        sys.exit()
 
 
 # initializing app

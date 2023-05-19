@@ -142,7 +142,7 @@
        <x>6</x>
        <y>30</y>
        <width>591</width>
-       <height>0</height>
+       <height>50</height>
       </rect>
      </property>
      <property name="minimumSize">
@@ -171,7 +171,7 @@
 }</string>
      </property>
      <property name="text">
-      <string>Both SSMS and ODBC Drivers were found!</string>
+      <string>All requirements were found!</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -183,7 +183,7 @@
        <x>10</x>
        <y>30</y>
        <width>591</width>
-       <height>50</height>
+       <height>0</height>
       </rect>
      </property>
      <property name="minimumSize">
@@ -224,7 +224,7 @@
        <x>10</x>
        <y>30</y>
        <width>591</width>
-       <height>50</height>
+       <height>0</height>
       </rect>
      </property>
      <property name="minimumSize">
@@ -265,7 +265,7 @@
        <x>10</x>
        <y>30</y>
        <width>591</width>
-       <height>50</height>
+       <height>0</height>
       </rect>
      </property>
      <property name="minimumSize">
@@ -295,6 +295,47 @@
      </property>
      <property name="text">
       <string>Both SSMS and ODBC were not found! Refer to the README.md for installation.</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="startWindow_OnlySSMSDriversFoundLabel">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>591</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Lato</family>
+       <pointsize>11</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	color: red
+}</string>
+     </property>
+     <property name="text">
+      <string>Error: Only SSMS and Drivers were detected. View the README.md for installation.</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -783,7 +824,7 @@ QPushButton::hover {
       <x>0</x>
       <y>590</y>
       <width>601</width>
-      <height>50</height>
+      <height>0</height>
      </rect>
     </property>
     <property name="minimumSize">
