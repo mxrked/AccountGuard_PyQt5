@@ -5,7 +5,7 @@
 '''
 
 
-from frontend.py.StartWindow import main
+from frontend.windows.StartWindow import main
 
 if __name__ == "__main__":
     main()
