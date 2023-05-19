@@ -1,6 +1,6 @@
 
 
-from frontend.assets.funcs.detect_required_programs import check_for_required_programs
+from frontend.assets.funcs.detect_required_programs import detect_required_programs
 
 def disableBtns(self):
     '''
@@ -23,19 +23,25 @@ def display_success_error_label(self):
     :return:
     '''
 
+    check_for_required_programs = detect_required_programs(self)
+
     # Error label(s)
-    if (check_for_required_programs == "SSMS was not found"):
+    if check_for_required_programs == "SSMS was not found":
         disableBtns(self)
         self.sSMSNotDetectedLabel.setFixedHeight(50)
 
-    if (check_for_required_programs == "ODBC was not found"):
+    if check_for_required_programs == "ODBC was not found":
         disableBtns(self)
         self.oDBCNotDetectedLabel.setFixedHeight(50)
 
-    if (check_for_required_programs == "Both programs were not found"):
+    if check_for_required_programs == "Both programs were not found":
         disableBtns(self)
         self.bothNotDetectedLabel.setFixedHeight(50)
 
+    if check_for_required_programs == "Only SSMS and Drivers were found, not database and table.":
+        disableBtns(self)
+        self.onlySSMSDriversFoundLabel.setFixedHeight(50)
+
     # Success label
-    if (check_for_required_programs == "Both programs were found"):
+    if check_for_required_programs == "All requirements were found":
         self.bothDetectedLabel.setFixedHeight(50)
