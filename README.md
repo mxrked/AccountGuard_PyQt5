@@ -38,16 +38,10 @@ SETTING UP THE PROGRAM
                                                                                                                    
       Now save the table as "Accounts"
 
-6. Now run the program's "run.exe" file. You should be seeing green text at the bottom that says "All requirements were found!", if you do see it, the program is working. If you see one of the following errors here is why:
+6. Now download the whole project and run the program's "run.exe" (output/run/run.exe) file. You should be seeing green text at the bottom that says "All requirements were found!", if you do see it, the program is working. If you see one of the following errors here is why:
    - "Both SSMS and ODBC were not found! Refer to the README.md for installation." = This means that neither SSMS or ODBC Driver 17 were found. You must install both in the proper location for it to be picked up (Perferred to install in there default locations via wizard)
    - "ODBC was not found! Download ODBC Driver 17 for SQL Server." = This means that ODBC Driver 17 was not found. You must install it in the proper location for it to be picked up (Perferred to install in its default location via wizard)
 
-
--------------------
-RUNNING THE PROGRAM
--------------------
-1. Download/ZIP the project.
-2. Extract the "output" folder to another folder of your choosing (Wanna be clean dont we :D).
-3. Open the "output/run" folder and execute the "run.exe" file.                                                                                                                                                                                                                                                                    
+![Image of the program running properly](./frontend/assets/imgs/runningprogram.png)                                                                    
                                
-![Image of the program running properly](./frontend/assets/imgs/runningprogram.png)
+
