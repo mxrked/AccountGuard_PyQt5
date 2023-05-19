@@ -278,16 +278,6 @@ class AddAccountWindow(QMainWindow):
             self.accountPasswordLE.setText("")
             self.accountConfirmPasswordLE.setText("")
 
-
-
-        # Apply functions to/style widgets
-        self.clearInputsBtn.clicked.connect(clearInputs)
-        self.addAccountBtn.clicked.connect(addAccount)
-
-
-        # Show the app
-        self.show()
-
         def goBack():
             '''
             This is used to go back to the start window
@@ -295,8 +285,6 @@ class AddAccountWindow(QMainWindow):
             '''
 
             from frontend.py.StartWindow import StartWindow
-
-            connection = connectToDB(self)
 
             clearInputs()
             hideBottomLabels()
@@ -310,9 +298,16 @@ class AddAccountWindow(QMainWindow):
             self.hide()
 
 
-
         # Apply functions to/style widgets
         self.backBtn.clicked.connect(goBack)
+        self.clearInputsBtn.clicked.connect(clearInputs)
+        self.addAccountBtn.clicked.connect(addAccount)
+
+
+        # Show the app
+        self.show()
+
+
 
     def closeEvent(self, event):
         '''
@@ -323,6 +318,16 @@ class AddAccountWindow(QMainWindow):
 
         from frontend.py.StartWindow import StartWindow
 
+        self.accountTypeLE.setText("")
+        self.accountEmailLE.setText("")
+        self.accountPasswordLE.setText("")
+        self.accountConfirmPasswordLE.setText("")
+        self.successLabel.setFixedHeight(0)
+        self.errorEmailTypeLabel.setFixedHeight(0)
+        self.errorEmptyInputsLabel.setFixedHeight(0)
+        self.errorSpaceStartLabel.setFixedHeight(0)
+        self.errorInvalidEmailLabel.setFixedHeight(0)
+        self.errorPasswordsNotMatchLabel.setFixedHeight(0)
 
         startWindow = StartWindow()
         startWindow.move(self.pos())
