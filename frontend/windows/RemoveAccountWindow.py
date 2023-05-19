@@ -273,7 +273,7 @@ class RemoveAccountWindow(QMainWindow):
             :return:
             '''
 
-            from frontend._py.StartWindow import StartWindow
+            from frontend.windows.StartWindow import StartWindow
 
             clearInputs()
             hideBottomLabels()
@@ -303,7 +303,7 @@ class RemoveAccountWindow(QMainWindow):
         :return:
         '''
 
-        from frontend._py.StartWindow import StartWindow
+        from frontend.windows.StartWindow import StartWindow
 
         self.accountTypeLE.setText("")
         self.accountEmailLE.setText("")

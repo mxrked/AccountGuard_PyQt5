@@ -62,7 +62,7 @@ class StartWindow(QMainWindow):
             :return:
             '''
 
-            from frontend._py import AddAccountWindow
+            from frontend.windows import AddAccountWindow
 
             AddAccountWindow.UIWindow.move(self.pos())
             AddAccountWindow.UIWindow.show()
@@ -80,58 +80,63 @@ class StartWindow(QMainWindow):
             :return:
             '''
 
-            from frontend._py import RemoveAccountWindow
+            from frontend.windows import RemoveAccountWindow
 
             RemoveAccountWindow.UIWindow.move(self.pos())
             RemoveAccountWindow.UIWindow.show()
             self.hide()
 
 
-        viewAccountsWindow = None
 
         def openViewAccountsWindow():
             '''
-            This is used to open the view accounts window
+            This is used to open the view accounts window and adds the data to the lists
             :return:
             '''
 
-            from frontend._py import ViewAccountsWindow
-            global viewAccountsWindow
+            from frontend.windows import ViewAccountsWindow
 
-            if viewAccountsWindow is None:
 
-                try:
-                    viewAccountsWindow = ViewAccountsWindow.ViewAccountsWindow()
+            typesList = ViewAccountsWindow.UIWindow.typesList
+            emailsList = ViewAccountsWindow.UIWindow.emailsList
+            passwordsList = ViewAccountsWindow.UIWindow.passwordsList
 
-                    typesList = viewAccountsWindow.typesList
-                    emailsList = viewAccountsWindow.emailsList
-                    passwordsList = viewAccountsWindow.passwordsList
+            connection = connectToDB(self)
+            cursor = connection.cursor()
 
-                    connection = connectToDB(self)
-                    cursor = connection.cursor()
+            typesQuery = "SELECT AccountType FROM Accounts"
+            emailsQuery = "SELECT AccountEmail FROM Accounts"
+            passwordsQuery = "SELECT AccountPassword FROM Accounts"
 
-                    typesQuery = "SELECT AccountType FROM Accounts"
-                    cursor.execute(typesQuery)
-                    types = cursor.fetchall()
+            cursor.execute(typesQuery)
+            types = cursor.fetchall()
 
-                    typesList.clear()
-                    emailsList.clear()
-                    passwordsList.clear()
+            cursor.execute(emailsQuery)
+            emails = cursor.fetchall()
 
-                    for type in types:
-                        item = QListWidgetItem(type[0])
-                        typesList.addItem(item)
+            cursor.execute(passwordsQuery)
+            passwords = cursor.fetchall()
 
-                    viewAccountsWindow.UIWindow.move(self.pos())
-                    viewAccountsWindow.UIWindow.show()
-                    self.hide()
+            typesList.clear()
+            emailsList.clear()
+            passwordsList.clear()
 
-                except Exception as e:
-                    print("Error opening View Accounts window:", str(e))
-            else:
-                viewAccountsWindow.UIWindow.move(self.pos())
-                viewAccountsWindow.UIWindow.show()
-                self.hide()
+            for type in types:
+                item = QListWidgetItem(type[0])
+                typesList.addItem(item)
+
+            for email in emails:
+                item = QListWidgetItem(email[0])
+                emailsList.addItem(item)
+
+            for password in passwords:
+                item = QListWidgetItem(password[0])
+                passwordsList.addItem(item)
+
+            ViewAccountsWindow.UIWindow.move(self.pos())
+            ViewAccountsWindow.UIWindow.show()
+            self.hide()
+
 
 
         def openInfoDialog():
@@ -140,7 +145,7 @@ class StartWindow(QMainWindow):
             :return:
             '''
 
-            from frontend._py import InfoDialog
+            from frontend.windows import InfoDialog
 
             InfoDialog.UIDialog.move(self.pos())
             InfoDialog.UIDialog.show()
