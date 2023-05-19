@@ -19,7 +19,17 @@ SETTING UP THE PROGRAM
    - Server Authentication: Windows Authentication
    - Login: localhost 
 4. Create a new database called "AccountGuard_PyQt5".
-5. Create a new query and copy and paste the "Database.sql" (backend/database/) contents into the query and execute it. Now the table for the program has been created.
+5. Now you must create the "Accounts" table. There are 2 ways you can do this.
+   - Easy Way: 
+      Create a new query and copy and paste the "Database.sql" (backend/database/) contents into the query and execute it. Now the table for the program has been created.
+   - Hard Way:
+      Right click on AccountGuard_PyQt5 > Tables > New > New Table. Now add the following columns to the table:
+      - ID: int - (In the columns properties, make sure that Identity Specification is set to Yes, 1, 1)
+      - AccountType - varchar(MAX) - ALLOW_NULLS
+      - AccountEmail - varchar(MAX) - ALLOW_NULLS
+      - AccountPassword - varchar(MAX) - ALLOW_NULLS
+      Now save the table as "Accounts"
+
 6. Work in progress....
 
 
