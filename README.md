@@ -28,6 +28,7 @@ SETTING UP THE PROGRAM
       - AccountType - varchar(MAX) - ALLOW_NULLS
       - AccountEmail - varchar(MAX) - ALLOW_NULLS
       - AccountPassword - varchar(MAX) - ALLOW_NULLS
+                                                                                                                   
       Now save the table as "Accounts"
 
 6. Work in progress....
