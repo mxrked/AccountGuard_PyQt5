@@ -48,5 +48,6 @@ RUNNING THE PROGRAM
 -------------------
 1. Download/ZIP the project.
 2. Extract the "output" folder to another folder of your choosing (Wanna be clean dont we :D).
-3. Open the "output/run" folder and execute the "run.exe" file.                                                                                                                                                                                                                                                                                                
+3. Open the "output/run" folder and execute the "run.exe" file.                                                                                                                                                                                                                                                                    
+                               
 ![Image of the program running properly](./frontend/assets/imgs/runningprogram.png)
