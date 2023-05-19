@@ -8,6 +8,9 @@ from PyQt5.QtWidgets import *
 from PyQt5 import uic, QtCore, QtGui, Qt
 from PyQt5.QtGui import QCursor
 
+from backend.database.accessing_db import connectToDB, closeConnectionToDB
+
+
 import sys, re
 
 
@@ -37,9 +40,6 @@ class AddAccountWindow(QMainWindow):
         # Define functions
         # EX: def doSomething():
         #       print("Test")
-
-
-
 
         def hideBottomLabels():
             '''
@@ -156,14 +156,25 @@ class AddAccountWindow(QMainWindow):
 
                 return False
 
-        def checkAccountNotAlreadyInUse():
+        def checkAccountNotAlreadyInUse(cursor):
             '''
             This is used to check if the account being added is already in use by checking
             the type and email
-            :return:
+            :return: boolean
             '''
 
-            pass
+
+            typeText = self.accountTypeLE.text()
+            emailText = self.accountEmailLE.text()
+
+            query = "SELECT COUNT(*) FROM Accounts WHERE AccountType = ? AND AccountEmail = ?"
+            cursor.execute(query, (typeText, emailText))
+            count = cursor.fetchone()[0] # This will grab the first one that matches
+
+            if count > 0:
+                return False # Already in use..
+            else:
+                return True # New account!
 
         def addAccount():
             '''
@@ -171,12 +182,21 @@ class AddAccountWindow(QMainWindow):
             :return:
             '''
 
+            connection = connectToDB(self)
+            cursor = connection.cursor()
+
+            # Calls for condition checks
             nonEmptyCheck = checkNonEmptyInputs()
             matchPasswordsCheck = checkPasswordsMatch()
             noSpacesCheck = checkForNoStartSpaces()
             validEmailCheck = checkForValidEmail()
-            nonExsistingAccount = checkAccountNotAlreadyInUse()
+            nonExsistingAccount = checkAccountNotAlreadyInUse(cursor)
 
+            typeText = self.accountTypeLE.text()
+            emailText = self.accountEmailLE.text()
+            passwordText = self.accountPasswordLE.text()
+
+            # Checking for errors and conditions
             if nonEmptyCheck:
 
                 if noSpacesCheck:
@@ -185,21 +205,39 @@ class AddAccountWindow(QMainWindow):
 
                         if validEmailCheck:
 
-                            print("Added account!")
+                            if nonExsistingAccount:
 
-                            hideBottomLabels()
-                            clearInputs()
-                            self.successLabel.setFixedHeight(50)
+                                # Adding the account/creating error
+                                try:
 
+                                    connection = connectToDB(self)
+                                    cursor = connection.cursor()
 
-                            # if nonExsistingAccount:
-                            #
-                            #     print("Added account!")
-                            #
-                            # else:
-                            #
-                            #     hideBottomLabels()
-                            #     self.errorEmailTypeLabel.setFixedHeight(50)
+                                    # print(connectCursor)
+
+                                    # Inserting account to table
+                                    query = f"INSERT INTO Accounts (AccountType, AccountEmail, AccountPassword) VALUES (?, ?, ?)"
+
+                                    print(query)
+
+                                    cursor.execute(query, (typeText, emailText, passwordText))
+                                    # cursor.execute(query)
+                                    connection.commit()
+                                    print("Data was inserted.")
+
+                                    hideBottomLabels()
+                                    clearInputs()
+                                    self.successLabel.setFixedHeight(50)
+
+                                except Exception as e:
+                                    print("Error inserting data:" + str(e))
+
+                            else:
+
+                                print("That email and type is already in use.")
+
+                                hideBottomLabels()
+                                self.errorEmailTypeLabel.setFixedHeight(50)
 
                         else:
 
@@ -258,12 +296,16 @@ class AddAccountWindow(QMainWindow):
 
             from frontend.py.StartWindow import StartWindow
 
+            connection = connectToDB(self)
+
             clearInputs()
             hideBottomLabels()
 
             startWindow = StartWindow()
             startWindow.move(self.pos())
             startWindow.show()
+
+            closeConnectionToDB(self)
 
             self.hide()
 
@@ -281,9 +323,12 @@ class AddAccountWindow(QMainWindow):
 
         from frontend.py.StartWindow import StartWindow
 
+
         startWindow = StartWindow()
         startWindow.move(self.pos())
         startWindow.show()
+
+        closeConnectionToDB(self)
 
         self.hide()
 
