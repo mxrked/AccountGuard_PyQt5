@@ -13,7 +13,7 @@ SETTING UP THE PROGRAM
 1. Make sure you have SQL server installed and its respected driver ({ODBC Driver 17 for SQL Server}) and also make sure that SQL is running. To check if SQL is running, do the following:
    - In the windows search bar, type "Services" and press enter.
    - Scroll to the bottom where you should see the following:
-   ![Alt Text](./frontend/assets/imgs/sqlrunning.png)
+   ![Showing SQL Server is running](./frontend/assets/imgs/sqlrunning.png)
    
 
 3. Download SSMS (SQL Microsoft Studio Management 19) - Download it to either the following locations:
@@ -48,4 +48,5 @@ RUNNING THE PROGRAM
 -------------------
 1. Download/ZIP the project.
 2. Extract the "output" folder to another folder of your choosing (Wanna be clean dont we :D).
-3. Open the "output/run" folder and execute the "run.exe" file.
+3. Open the "output/run" folder and execute the "run.exe" file.                                                                                                                                                                                                                                                                                                
+![Image of the program running properly](./frontend/assets/imgs/runningprogram.png)
